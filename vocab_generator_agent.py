@@ -55,6 +55,7 @@ agent = Agent(
     port=8002,
     seed=VOCAB_AGENT_SEED,
     endpoint=["http://127.0.0.1:8002/submit"],
+    mailbox=True
 )
 fund_agent_if_low(agent.wallet.address())
 vocab_proto = Protocol("VocabularyGeneration")
