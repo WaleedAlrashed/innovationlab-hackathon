@@ -29,7 +29,7 @@ TRANSACTAI_AGENT_ADDRESS = (
 # This will be filled in after running client_agent.py once
 CLIENT_AGENT_ADDRESS = "hagent1qwqlsjqn0qgct6fnlsjj55u5a8034y728x7a36hkd36gue9y9dg7snp53nm"
 
-if ASI_API_KEY == "sk_d811ec74abde421eb3afa6c0fce1d3a4cac9b9ff111b4d3eb1f8a15fd0ce69b5":
+if ASI_API_KEY == "FILL_IN_ASI_API_KEY_HERE":
     print("WARNING: ASI_API_KEY not set. Please set environment variable or replace placeholder.")
 if CLIENT_AGENT_ADDRESS == "FILL_IN_CLIENT_AGENT_ADDRESS_HERE":
     print("WARNING: CLIENT_AGENT_ADDRESS not set. Run client_agent.py first and fill this in.")
