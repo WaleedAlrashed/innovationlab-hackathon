@@ -30,7 +30,11 @@ logger.info(f"Set html2image output path to: {hti.output_path}")
 # --- Set Custom Browser Flags for New Headless Mode --- ADD THIS ---
 # This explicitly tells Chrome to use the newer headless implementation
 # Also hide scrollbars which is usually desirable for screenshots
-hti.browser.flags = ['--headless=new', '--hide-scrollbars']
+hti.browser.flags = [
+    '--headless=new',
+    '--hide-scrollbars',
+    '--virtual-time-budget=2000'
+    ]
 # If running in Docker or some CI environments, you might also need:
 # hti.browser.flags.append('--no-sandbox')
 logger.info(f"Set custom browser flags: {hti.browser.flags}")
