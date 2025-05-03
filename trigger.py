@@ -17,7 +17,7 @@ fund_agent_if_low(trigger_agent.wallet.address())
 
 @trigger_agent.on_event("startup")
 async def send_word(ctx: Context):
-    target_word = "browser" # The word you want to generate content for
+    target_word = "extension" # The word you want to generate content for
     ctx.logger.info(f"Sending word request for '{target_word}' to {VOCAB_AGENT_ADDRESS}")
     try:
         # Send the message
