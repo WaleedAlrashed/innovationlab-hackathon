@@ -16,8 +16,10 @@ googleapis-common-protos==1.70.0
 grpcio==1.71.0
 h11==0.16.0
 idna==3.10
+Jinja2==3.1.6
 jsonschema==4.23.0
 jsonschema-specifications==2025.4.1
+MarkupSafe==3.0.2
 multidict==6.4.3
 platformdirs==4.3.7
 propcache==0.3.1
@@ -26,6 +28,7 @@ pycryptodome==3.22.0
 pydantic==2.11.4
 pydantic_core==2.33.2
 python-dateutil==2.9.0.post0
+python-dotenv==1.1.0
 referencing==0.36.2
 requests==2.32.3
 rpds-py==0.24.0

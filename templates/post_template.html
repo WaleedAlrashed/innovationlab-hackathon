@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <title>{{ post['word'] }}</title>
+    <link href="https://fonts.googleapis.com/css2?family=League+Spartan:wght@400;700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'League Spartan', sans-serif;
+            width: 500px;
+
+            /* Use the base64 encoded background image */
+                {
+                % if background_image_base64 %
+            }
+
+            background-image: url(data:image/png;base64,{{ background_image_base64 }});
+            background-size: cover;
+            /* Or contain, depending on desired effect */
+            background-repeat: no-repeat;
+            background-position: center center;
+
+                {
+                % else %
+            }
+
+            background-color: #f0f4f8;
+
+            /* Fallback background color */
+                {
+                % endif %
+            }
+
+            padding: 20px;
+            border-radius: 15px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            position: relative;
+            /* Ensure text is readable over background */
+            color: #333;
+            /* Adjust text color if needed */
+            min-height: 300px;
+            /* Ensure body has some height */
+        }
+
+        /* Add the rest of your CSS from the previous example */
+        .header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 15px;
+        }
+
+        .word-section {
+            display: flex;
+            align-items: baseline;
+            gap: 10px;
+        }
+
+        .word-en {
+            font-size: 2.5em;
+            font-weight: bold;
+            color: #ff6f61;
+        }
+
+        .word-ar {
+            font-size: 1.8em;
+            color: #ff6f61;
+            direction: rtl;
+        }
+
+        .phonetic {
+            font-size: 1em;
+            color: #555;
+            margin-bottom: 15px;
+        }
+
+        .detail-item {
+            margin-bottom: 10px;
+            background-color: rgba(255, 255, 255, 0.7);
+            padding: 5px;
+            border-radius: 5px;
+        }
+
+        /* Added semi-transparent background for readability */
+        .detail-label {
+            font-weight: bold;
+        }
+
+        .example-en {
+            font-style: italic;
+            margin-top: 15px;
+            background-color: rgba(255, 255, 255, 0.7);
+            padding: 5px;
+            border-radius: 5px;
+        }
+
+        .example-ar {
+            direction: rtl;
+            margin-top: 5px;
+            font-size: 1.1em;
+            background-color: rgba(255, 255, 255, 0.7);
+            padding: 5px;
+            border-radius: 5px;
+        }
+
+        .telegram-handle {
+            position: absolute;
+            bottom: 10px;
+            left: 10px;
+            font-size: 0.9em;
+            color: #0088cc;
+            background-color: rgba(255, 255, 255, 0.7);
+            padding: 2px 4px;
+            border-radius: 3px;
+        }
+    </style>
+</head>
+
+<body>
+    <!-- Content remains the same -->
+    <div class="header">
+        <div class="word-section">
+            <span class="word-en">{{ post['word'] | capitalize }}</span>
+            <span class="word-ar">{{ post['word_arabic'] }}</span>
+        </div>
+    </div>
+    <div class="phonetic">{{ post['phonetic'] }}</div> <!-- Changed -->
+
+    <div class="detail-item">
+        <span class="detail-label">Meaning:</span> {{ post['meaning'] }} <!-- Changed -->
+    </div>
+    <div class="detail-item">
+        <span class="detail-label">Synonyms:</span> {{ post['synonyms'] }} <!-- Changed -->
+    </div>
+    <div class="detail-item">
+        <span class="detail-label">Antonyms:</span> {{ post['antonyms'] }} <!-- Changed -->
+    </div>
+
+    <!-- Changed post.word inside replace filter too -->
+    <div class="example-en">{{ post['example_sentence'] | replace('_' + post['word'] + '_', '<u>' + post['word'] +
+            '</u>') | safe }}</div>
+    <div class="example-ar">"{{ post['example_sentence_arabic'] }}"</div> <!-- Changed -->
+
+    <div class="telegram-handle">@dailylex_en</div>
+</body>
+
+</html>
