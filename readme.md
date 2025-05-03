@@ -137,8 +137,8 @@ Follow these steps to set up and run the Vocab Agent locally.
 
 1.  **Clone the Repository:**
     ```bash
-    git clone <your-repo-url>
-    cd <your-repo-directory>
+    git clone https://github.com/WaleedAlrashed/innovationlab-hackathon
+    cd innovationlab-hackathon
     ```
 
 2.  **Create and Activate Virtual Environment:**
