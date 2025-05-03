@@ -11,7 +11,7 @@ CLIENT_SEED = "my_very_secret_client_seed_phrase_456" # Make this unique and sec
 # This will be filled in after running creator_agent.py once
 CREATOR_AGENT_ADDRESS = "agent1qveeesvz20h9029s2rpwt7n7tfuh7090v9wps6vh6d5ek97yetywgh85yu2"
 
-if CREATOR_AGENT_ADDRESS == "agent1qveeesvz20h9029s2rpwt7n7tfuh7090v9wps6vh6d5ek97yetywgh85yu2":
+if CREATOR_AGENT_ADDRESS == "FILL_IN_CREATOR_AGENT_ADDRESS_HERE":
     print("WARNING: CREATOR_AGENT_ADDRESS not set. Run creator_agent.py first and fill this in.")
 
 # --- Agent Setup ---
