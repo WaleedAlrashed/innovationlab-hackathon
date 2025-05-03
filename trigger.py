@@ -1,45 +1,40 @@
-# trigger.py
-import asyncio # <-- Import asyncio
+# trigger.py (Corrected Again)
+import asyncio
 from uagents import Agent, Context
 from uagents.setup import fund_agent_if_low
-from models import CommissionRequest
+from models import WordRequest
 
-CREATOR_AGENT_ADDRESS = "agent1qveeesvz20h9029s2rpwt7n7tfuh7090v9wps6vh6d5ek97yetywgh85yu2" # Make sure this is correct!
+# !! REPLACE WITH THE VOCAB GENERATOR AGENT'S ADDRESS !!
+VOCAB_AGENT_ADDRESS = "agent1qvmpklewvc668xawcgv6vnfkqmdccghnd26efsm7ps5a5rdc57rfz4ftlt8" # Make sure this is correct!
 
-if CREATOR_AGENT_ADDRESS == "FILL_IN_CREATOR_AGENT_ADDRESS_HERE":
-    print("Please fill in the CREATOR_AGENT_ADDRESS in trigger.py")
+if VOCAB_AGENT_ADDRESS == "FILL_IN_VOCAB_AGENT_ADDRESS_HERE":
+    print("Please fill in the VOCAB_AGENT_ADDRESS in trigger.py")
     exit()
 
-# No need to specify port, as we won't keep the server running long
-trigger_agent = Agent(name="trigger", seed="trigger_seed_phrase")
+# Define the agent
+trigger_agent = Agent(name="trigger", seed="trigger_seed_phrase_abc")
 fund_agent_if_low(trigger_agent.wallet.address())
 
 @trigger_agent.on_event("startup")
-async def send_commission(ctx: Context):
-    ctx.logger.info(f"Sending commission request to {CREATOR_AGENT_ADDRESS}")
+async def send_word(ctx: Context):
+    target_word = "browser" # The word you want to generate content for
+    ctx.logger.info(f"Sending word request for '{target_word}' to {VOCAB_AGENT_ADDRESS}")
     try:
+        # Send the message
         await ctx.send(
-            CREATOR_AGENT_ADDRESS,
-            CommissionRequest(
-                client_name="Test Client Inc.",
-                task_description="Design a company logo",
-                budget=500.00,
-                deadline="2025-05-10",
-            ),
+            VOCAB_AGENT_ADDRESS,
+            WordRequest(word=target_word),
         )
-        ctx.logger.info("Commission request sent.")
+        ctx.logger.info("Word request sent.")
     except Exception as e:
-        ctx.logger.error(f"Failed to send commission request: {e}")
+        ctx.logger.error(f"Failed to send word request: {e}")
 
-    # --- Add these lines ---
-    ctx.logger.info("Task complete, trigger agent shutting down.")
-    # Give a very short delay to ensure the message is dispatched
-    await asyncio.sleep(1.0)
-    # Stop the agent's execution loop
-    ctx.agent.stop()
-    # --- End of added lines ---
+    # No explicit stop needed here.
+    # The agent should exit after this handler finishes.
+    ctx.logger.info("Startup task complete.")
 
 
 if __name__ == "__main__":
+    # Run the agent. It will execute the startup task and then exit.
     trigger_agent.run()
-    # The script will exit shortly after agent.stop() is called
+    print("Trigger agent finished execution.") # Added print statement
