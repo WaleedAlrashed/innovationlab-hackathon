@@ -21,12 +21,12 @@ class WordInput(BaseModel):
 class VocabOutput(BaseModel):
     word: str
     word_arabic: str
-    phonetics: str # Matches Laravel form key
+    phonetic: str # Matches Laravel form key
     meaning: str
     synonyms: str
     antonyms: str
-    example: str # Matches Laravel form key
-    example_arabic: str # Matches Laravel form key
+    example_sentence: str # Matches Laravel form key
+    example_sentence_arabic: str # Matches Laravel form key
     icon: str = "" # Default empty string
     description: str
     # Add other fields if your Laravel code uses them from the response
