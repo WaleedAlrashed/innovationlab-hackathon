@@ -92,7 +92,6 @@ def crete_image_api_call(payload: dict) -> str:
 @vocab_proto.on_message(model=WordRequest)
 async def handle_word_request(ctx: Context, sender: str, msg: WordRequest):
     ctx.logger.info(f"Received word request from {sender}: {msg.word}")
-    image_path = ""  # TODO
     word = msg.word.strip().lower()
 
     image_path = ctx.storage.get(word)
