@@ -95,9 +95,9 @@ async def handle_word_request(ctx: Context, sender: str, msg: WordRequest):
     image_path = ""  # TODO
     word = msg.word.strip().lower()
 
-    existing = ctx.storage.get(word)
+    image_path = ctx.storage.get(word)
 
-    if existing:
+    if image_path:
         ctx.logger.info(f"Word '{word}' already exists in storage. Returning existing data.")
         await ctx.send(
             destination=sender,
