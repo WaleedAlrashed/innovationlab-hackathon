@@ -228,8 +228,8 @@ Follow these steps to set up and run the Vocab Agent locally.
 
 ## 👥 Team
 
-*   **(Your Name/Team Name)**
-*   *(Briefly mention roles if applicable)*
+*   **(Waleed Alrashed)**
+*   *(Full Stack Developer)*
 
 ---
 
