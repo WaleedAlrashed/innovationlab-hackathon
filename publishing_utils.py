@@ -11,7 +11,7 @@ from dotenv import load_dotenv
 load_dotenv()
 ASI_API_KEY = os.environ.get("ASI_API_KEY")
 ASI_API_ENDPOINT = os.environ.get("ASI_API_ENDPOINT", "https://api.asi1.ai/v1/chat/completions")
-TELEGRAM_CHAT_ID = os.environ.get("TELEGRAM_CHAT_ID", "@your_channel_name") # Still needed for description formatting
+TELEGRAM_CHAT_ID = os.environ.get("TELEGRAM_CHAT_ID")
 
 # Configure logging
 logger = logging.getLogger(__name__)
@@ -23,6 +23,7 @@ def clean_json_response(text: str) -> str:
     text = re.sub(r'\s*```$', '', text)
     text = text.strip()
     return text
+
 
 # --- NEW Core Generation Function ---
 async def generate_vocab_data(word: str) -> dict | None:
@@ -90,14 +91,14 @@ notes: response should be returned as valid json object only, do not include any
                         'word': inner_data.get('word', word), # Use original word as fallback
                         'word_arabic': inner_data.get('word_arabic', ''),
                         # Use 'phonetic' from inner_data for the 'phonetics' key Laravel expects
-                        'phonetics': inner_data.get('phonetic', ''),
+                        'phonetic': inner_data.get('phonetic', ''),
                         'meaning': inner_data.get('meaning', ''),
                         'synonyms': inner_data.get('synonyms', ''),
                         'antonyms': inner_data.get('antonyms', ''),
                         # Use 'example_sentence' from inner_data for the 'example' key Laravel expects
-                        'example': inner_data.get('example_sentence', ''),
+                        'example_sentence': inner_data.get('example_sentence', ''),
                         # Use 'example_sentence_arabic' from inner_data for the 'example_arabic' key
-                        'example_arabic': inner_data.get('example_sentence_arabic', ''),
+                        'example_sentence_arabic': inner_data.get('example_sentence_arabic', ''),
                         'url': inner_data.get('url', ''),
                         'question': inner_data.get('question', ''),
                         'icon': '', # Add empty icon field as Laravel expects it
