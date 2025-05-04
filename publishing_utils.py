@@ -119,7 +119,7 @@ notes: response should be returned as valid json object only, do not include any
 Share it below!
 
 🔗 <a href="{url}">Read More</a>
-📌 #Daily{word_capitalized} | {TELEGRAM_CHAT_ID or '@your_channel'}"""
+📌 #Daily{word_capitalized} | {TELEGRAM_CHAT_ID or '@daily_lex'}"""
                     output_data['description'] = description.strip()
 
                     logger.info(f"Final output_data prepared: {output_data}")
